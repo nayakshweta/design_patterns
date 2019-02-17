@@ -13,55 +13,55 @@ class AbstractUtensilFactory(metaclass=ABCMeta):
 class PlasticUtensilFactory(AbstractUtensilFactory):
 
     def create_bowl(self):
-        return plastic_bowl()
+        return PlasticBowl()
     
     def create_pan(self):
-        return plastic_pan()
+        return PlasticPan()
 
 class SteelUtensilFactory(AbstractUtensilFactory):
 
     def create_bowl(self):
-        return steel_bowl()
+        return SteelBowl()
     
     def create_pan(self):
-        return steel_pan()
+        return SteelPan()
 
 
-class bowl(metaclass=ABCMeta):
+class Bowl(metaclass=ABCMeta):
     @abstractmethod
     def bowl_maker(self):
         pass
 
-class plastic_bowl(bowl):
+class PlasticBowl(Bowl):
     def bowl_maker(self):
         print("Here's a plastic bowl")
         pass
 
-class steel_bowl(bowl):
+class SteelBowl(Bowl):
     def bowl_maker(self):
         print("Here's a steel bowl")
         pass
 
 
-class pan(metaclass=ABCMeta):
+class Pan(metaclass=ABCMeta):
     @abstractmethod
     def pan_maker(self):
         pass
 
-class plastic_pan(pan):
+class PlasticPan(Pan):
     def pan_maker(self):
         print("Here's a plastic pan")
         pass
 
-class steel_pan(pan):
+class SteelPan(Pan):
     def pan_maker(self):
         print("Here's a steel pan")
         pass
 
 def main():
-    for utensilfactory in (PlasticUtensilFactory(),SteelUtensilFactory()):
-        bowl = utensilfactory.create_bowl()
-        pan = utensilfactory.create_pan()
+    for utensil_factory in (PlasticUtensilFactory(),SteelUtensilFactory()):
+        bowl = utensil_factory.create_bowl()
+        pan = utensil_factory.create_pan()
         bowl.bowl_maker()
         pan.pan_maker()
 
